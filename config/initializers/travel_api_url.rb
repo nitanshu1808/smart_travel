@@ -1,0 +1,1 @@
+TRAVEL_API = YAML.load_file("#{Rails.root.to_s}/config/travel_api_urls.yml")[Rails.env]

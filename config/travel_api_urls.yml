@@ -1,0 +1,19 @@
+default: &default
+  dublin_bus: 'https://data.smartdublin.ie/cgi-bin/rtpi/'
+  bus_stop:   '/busstopinformation'
+
+
+development:
+  <<: *default
+
+qa:
+  <<: *default
+
+
+staging:
+  <<: *default
+
+
+production:
+  <<: *default
+
