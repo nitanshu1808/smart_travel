@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  model:
+    user:
+      valid_email: "Please enter valid email"
+      valid_password: "Password should be of atleast 12 characters long"
