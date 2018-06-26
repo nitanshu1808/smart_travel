@@ -2,8 +2,11 @@ body{
 	background-color: black	 !important;
 }
 .custom-logo{
-	height: 250px;
-	width: 250px;
+	height: 300px;
+	width: 300px;
+	border-style: solid;
+  border-width: 3px;
+  border-color: whitesmoke;
 }
 
 .align-field{
@@ -59,4 +62,9 @@ body{
 	font-size: 15px;
 	margin: 0px 0px 20px 0px;
 	float: left;
+}
+.error{
+	color: red  !important;
+	float: left;
+	margin: 1px 0px 10px 0px;
 }

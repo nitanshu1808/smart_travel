@@ -35,6 +35,10 @@ en:
     user:
       valid_email: "Please enter valid email"
       valid_password: "Password should be of atleast 12 characters long"
+      enter_val:    "Please enter a %{val}."
+      character_validation: "%{val} must be less than %{num} characters"
+      email:          "Email"
+      user_name:           "Name"
   web:
     register_facebook:    "Register With Facebook"
     sign_up:              "Sign up"
