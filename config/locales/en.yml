@@ -35,3 +35,16 @@ en:
     user:
       valid_email: "Please enter valid email"
       valid_password: "Password should be of atleast 12 characters long"
+  web:
+    register_facebook:    "Register With Facebook"
+    sign_up:              "Sign up"
+    choose_username:      "Choose Username"
+    enter_email:          "Enter Email"
+    enter_password:       "Enter Password"
+    create_your_account:  "Create Your Account"
+    required:             "Required"
+    or:                   "OR"
+    get_started:          "Get Started"
+    agreement:            "By signing up, I agree to"
+    privacy:              "Privacy Policy"
+    tos:                  "Terms of Use"

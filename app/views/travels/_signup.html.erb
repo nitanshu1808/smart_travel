@@ -1,0 +1,22 @@
+<%= form_for User.new, url: user_registration_path, method: :post do |f| %>
+  
+    <div class="or-line"><span><%= I18n.t("web.or") %></span></div>
+
+    <%= link_to "#" do %>
+      <%= image_tag("login_with_fb.png", class: "fb-logo") %>
+    <% end %>
+
+    <%= f.text_field :user_name, :label => false, placeholder: I18n.t("web.choose_username"), autocomplete: "off", class: "form-control align-field" %>
+
+    <%= f.email_field :email, :label => false, placeholder: I18n.t("web.enter_email") + " *", class: "form-control align-field" %>
+
+    <%= f.password_field :password, :label => false, autocomplete: "off", placeholder: I18n.t("web.enter_password") + " *", class: "form-control align-field"  %>
+
+    <div class="pull-left req-text">
+      <%= I18n.t("web.required")%>
+    </div>
+    <p class="agree-to-use"> <%= I18n.t("web.agreement") %> <%= link_to I18n.t("web.privacy"), "#" %> and <%= link_to I18n.t("web.tos"), "#" %>.</p>
+    <%= f.submit I18n.t("web.get_started"), class: "form-submit" %>
+<% end %>
+
+<!-- http://jsfiddle.net/doktormolle/aZrvs/ -->

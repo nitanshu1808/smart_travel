@@ -1,5 +1,5 @@
 class TravelsController < ApplicationController
 	def index
-		History.competing_price
+		# History.competing_price
 	end
 end
