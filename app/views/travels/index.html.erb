@@ -1,25 +1,30 @@
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <span>Welcome to Smart Travel</span>
+  </div>
+</div>
 <div class="container-fluid">
-	<div class="container">
-		<div class="row align-form">
-			<div class="col-md-3">
-				<div class="text-center align-logo-img">
-				  <figure>
-				    <%= image_tag("logo.jpg", alt: "Application Logo", class: "img-circle custom-logo") %>
-				  </figure>
-				</div>				
-			</div>
-			<div class="col-md-9">
-				<div class="row">
-					<div class="col-md-2"></div>
-					<div class="col-md-6 text-center">
-						<div class="login-heading-area">
-				      <h1><%= I18n.t("web.create_your_account") %></h1>
-				    </div>
-				    <%= render 'signup' %>
-					</div>
-					<div class="col-md-4"></div>	
-				</div>				
-			</div>
-		</div>
-	</div>  
+  <div class="container">
+    <div class="row align-form">
+      <div class="col-md-3">
+        <div class="text-center align-logo-img">
+          <figure>
+            <%= image_tag("logo.jpg", alt: "Application Logo", class: "img-circle custom-logo") %>
+          </figure>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-6 text-center">
+            <div class="login-heading-area">
+              <h1><%= I18n.t("web.create_your_account") %></h1>
+            </div>
+            <%= render 'travels/signup' %>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
