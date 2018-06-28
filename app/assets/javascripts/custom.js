@@ -9,10 +9,10 @@ $(document).on('turbolinks:load', function() {
         required: true,
         maxlength: 50,
         email: true
+      },
+      "user[password]":{
+        required: true
       }
-      // "student[password]":{
-      //   required: true
-      // }
     },
     messages: {
       "user[user_name]": {
@@ -22,10 +22,10 @@ $(document).on('turbolinks:load', function() {
           required:  I18n.t("model.user.enter_val", {val: I18n.t("model.user.email")}),
           maxlength: I18n.t("model.user.character_validation", {val: I18n.t("model.user.email"), num: 50}),
           email:     I18n.t("model.user.valid_email")
+      },
+      "user[password]": {
+          required:  I18n.t("model.user.enter_val", {val: I18n.t("model.user.password")})
       }
-      // "student[password]": {
-      //     required:  I18n.t("model.student.enter_val", {val: I18n.t("model.student.internship_company")})
-      // }
     }
   });
 });
