@@ -28,3 +28,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore facebook app id and app secret
+/config/facebook_api_urls.yml
+/config/initializers/facebook_api_url.rb
