@@ -16,7 +16,7 @@ body{
 
 
 .align-form{
-	margin: 8px 20px;
+	margin: 8px 20px 20px 20px;
 }
 
 .login-heading-area{
@@ -80,4 +80,10 @@ body{
 	border: solid 0.1px grey;
 	border-left: 0px solid;
 	border-right: 0px solid;
+}
+
+.validation-error{
+	color: red;
+	float: left;
+	margin: -15px 0px 10px 0px;
 }
