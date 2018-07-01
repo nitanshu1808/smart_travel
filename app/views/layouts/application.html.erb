@@ -30,7 +30,9 @@
                 <span class="glyphicon glyphicon-log-in"></span> Log Out
               <% end %>
             <% else %>
-              <a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+              <%= link_to new_user_session_path do %>
+                  <span class="glyphicon glyphicon-log-in"></span> Log In
+              <% end %>
             <% end %>
           </li>
         </ul>
