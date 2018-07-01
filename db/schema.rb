@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_24_130824) do
+ActiveRecord::Schema.define(version: 2018_06_29_235435) do
 
   create_table "histories", force: :cascade do |t|
     t.string "stop_name", null: false
     t.string "stop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string "provider", null: false
+    t.string "provider_uid", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_06_24_130824) do
     t.string "encrypted_password", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "image"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

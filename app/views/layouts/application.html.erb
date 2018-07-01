@@ -12,6 +12,30 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">SmartTravel</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <!-- <li class="active"><a href="#">Home</a></li> -->
+          <li><a href="javascript:void(0)">Dublin Bus</a></li>
+          <li><a href="javascript:void(0)">Dublin Bikes</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li>
+            <% if current_user %> 
+              <%= link_to destroy_user_session_path, method: :delete  do %>
+                <span class="glyphicon glyphicon-log-in"></span> Log Out
+              <% end %>
+            <% else %>
+              <a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

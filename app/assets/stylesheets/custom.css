@@ -72,18 +72,23 @@ body{
 	color: white;
 	font-size: 15px;
 }
-.jumbotron{
-	background-color: black !important;
-	margin: -10px 0px 0px 0px !important;
-	color: white !important;
-	font-size: 65px;
-	border: solid 0.1px grey;
-	border-left: 0px solid;
-	border-right: 0px solid;
-}
 
 .validation-error{
 	color: red;
 	float: left;
 	margin: -15px 0px 10px 0px;
+}
+
+.welcm-msg{
+	color: white !important;
+	font-size: 65px;
+	margin: 10px 0 20px !important;
+}
+
+.skip_and_con{
+	margin: 5px 0px;
+}
+
+.or-line{
+	margin: 5px 0px;
 }
