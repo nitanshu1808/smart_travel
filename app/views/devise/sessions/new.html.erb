@@ -3,7 +3,12 @@
     <div class="row text-center login-form">
       <div class="col-md-4"></div>
       <div class="col-md-4">
-        <div class="welcm-msg">SmartTravel</div>
+        <div class="login-frm-hdr">
+          <%= I18n.t("app_name") %>
+          <figure>
+            <%= image_tag("logo.jpg", alt: "Application Logo", class: "img-circle logo-img") %>
+          </figure>
+        </div>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <%= f.email_field :email, :label => false, placeholder: I18n.t("web.enter_email") + " *", class: "form-control align-field", "data-validate-error": true, "data-error-msg": f.object.errors[:email][0] %>
 
