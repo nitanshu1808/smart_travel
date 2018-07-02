@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SmartTravel</title>
+    <title><%= I18n.t("app_name") %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,33 +12,37 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">SmartTravel</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <!-- <li class="active"><a href="#">Home</a></li> -->
-          <li><a href="javascript:void(0)">Dublin Bus</a></li>
-          <li><a href="javascript:void(0)">Dublin Bikes</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li>
-            <% if current_user %> 
-              <%= link_to destroy_user_session_path, method: :delete  do %>
-                <span class="glyphicon glyphicon-log-in"></span> Log Out
-              <% end %>
-            <% else %>
-              <%= link_to new_user_session_path do %>
-                  <span class="glyphicon glyphicon-log-in"></span> Log In
-              <% end %>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><%= I18n.t("app_name") %></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="javascript:void(0)"><%= I18n.t("web.dublin_bikes") %></a></li>
+        <li><a href="javascript:void(0)"><%= I18n.t("web.dublin_bus") %></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> <%= I18n.t("web.sign_up") %></a></li>
+        <li>
+          <% if current_user %> 
+            <%= link_to destroy_user_session_path, method: :delete  do %>
+              <span class="glyphicon glyphicon-log-in"></span> <%= I18n.t("web.log_out") %>
             <% end %>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <%= yield %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+                <span class="glyphicon glyphicon-log-in"></span> <%= I18n.t("web.log_in") %>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <%= yield %>
   </body>
 </html>
 
