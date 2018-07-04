@@ -59,4 +59,6 @@ en:
     dont_have_account:    "Don't have an account?"
     dublin_bus:           "Dublin Bus"
     dublin_bikes:         "Dublin Bikes"
-    log_out:               "Log Out"
+    log_out:              "Log Out"
+    skip_and_continue:    "Skip and Continue"
+    invalid_credentials:  "Invalid Email/Password. Email Id and Password does not match"

@@ -1,6 +1,9 @@
 default: &default
-  dublin_bus: 'https://data.smartdublin.ie/cgi-bin/rtpi/'
-  bus_stop:   '/busstopinformation'
+  dublin_bus:           'https://data.smartdublin.ie/cgi-bin/rtpi/'
+  bus_stop:             '/busstopinformation'
+  google_map_api:       'https://maps.googleapis.com/maps/api'
+  nearby_search_place:  '/place/nearbysearch'
+  response_type:        '/json?'
 
 development:
   <<: *default
@@ -8,11 +11,9 @@ development:
 qa:
   <<: *default
 
-
 staging:
   <<: *default
 
 
 production:
   <<: *default
-

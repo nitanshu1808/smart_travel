@@ -10,7 +10,16 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    super
+    @user = User.find_by(email: params[:user][:email])
+    if @user && @user.valid_password?(params[:user][:password])
+      set_flash_message!(:notice, :signed_in)
+      sign_in(resource_name, resource)
+      redirect_to dublin_bus_url
+    else
+      @user = @user || User.new(signin_params)
+      @user.errors.add(:password, I18n.t('web.invalid_credentials'))
+      render 'new'
+    end
   end
 
   # DELETE /resource/sign_out
@@ -18,10 +27,9 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
 
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
+  private
+  def signin_params
+    params.require(:user).permit(:email, :password)
   end
+
 end

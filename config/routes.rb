@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "users/registrations", :omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_for :users, :controllers => {:registrations => "users/registrations", :omniauth_callbacks => "users/omniauth_callbacks", :sessions => "users/sessions"}
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'travels#index'
-  resources :travels
-  get '*path' => redirect('/')
+  unauthenticated :user do
+    root 'travels#index'
+  end
+  authenticated :user do
+    root "travels#dublin_bus"
+  end
+
+  resources :travels, only: :index
+
+  get '/dublin_bus', to: 'travels#dublin_bus'
+  get '/dublin_bikes', to: 'travels#dublin_bikes'
+
+  # get '*path' => redirect('/')
 end
