@@ -40,7 +40,26 @@ $(document).on('click', '.stop-info', function(event){
   }
 
   var onDone = function (result) {
-    var div = detailDiv.closest(".panel-body")
+    var div        = detailDiv.find(".panel-body")
+    div.removeClass("hide")
+    div.html("")
+    if(result.is_valid){
+      var dataSet       = result.data;
+      var htmlString    = "<ul class='list-group'>"
+      for (i = 0; i < dataSet.length; i++) {
+        var data      = dataSet[i];        
+        htmlString    += "<li class='list-group-item'><span class = 'bus-detail'>Arrival Time: " + data.arrivaldatetime + "</span>"  +
+                      "<span class = 'bus-detail'>Departure Time: " + data.departureduetime + "</span>" +
+                      "<span class = 'bus-detail'>Destination: " + data.destination + "</span>" +
+                      "<span class = 'bus-detail'>Origin: " + data.origin + "</span>" +
+                      "<span class = 'bus-detail'>Arrival Time: " + data.scheduledarrivaldatetime + "</span>" +
+                      "<span class = 'bus-detail'>Departure Time: " + data.scheduleddeparturedatetime + "</span>"
+      }
+      htmlString += "</li></ul>"
+    }else{
+      var htmlString = "<div class = 'text-center'>" + result.data + "</div>"
+    }
+    div.append(htmlString);
   }
 
   var onFail = function( err ) {

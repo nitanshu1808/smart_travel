@@ -19,6 +19,10 @@ class TravelInfo
   end
 
   def error_msg
-    "No Results found for #{@options["name"]} at this time #{Time.current}"
+    "No Results found for #{@options["name"]} at this time #{TravelInfo.current_time}"
+  end
+
+  def self.current_time
+    DateTime.now.strftime("%H:%M:%S %p :%Z")
   end
 end

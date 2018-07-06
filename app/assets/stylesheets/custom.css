@@ -163,8 +163,8 @@ body{
 
 .accordion-toggle {
   display: block;
-  padding: 30px;
-  margin: -10px -15px;
+  padding: 30px 0px;
+  margin: 4px 0px;
 }
 
 .location-icon{
@@ -172,4 +172,11 @@ body{
 	height: 20px;
 	width: 30px;
 	margin: 0px 10px;
+}
+
+.bus-detail{
+	font-size: 16px;
+	color: #337ab7;
+	display: block;
+	border: 0.1px dashed grey;
 }
