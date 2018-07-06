@@ -157,3 +157,19 @@ body{
 .sesn-link{
 	margin: 0px 10px;
 }
+.dublin-bus-list{
+	margin: 50px 0px;
+}
+
+.accordion-toggle {
+  display: block;
+  padding: 30px;
+  margin: -10px -15px;
+}
+
+.location-icon{
+	float: left;
+	height: 20px;
+	width: 30px;
+	margin: 0px 10px;
+}

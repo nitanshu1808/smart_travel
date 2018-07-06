@@ -19,5 +19,4 @@
 //= require jquery.min
 //= require bootstrap.min
 //= require jquery.validate
-//= require travel
 //= require custom

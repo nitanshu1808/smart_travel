@@ -29,3 +29,36 @@ $(document).on('turbolinks:load', function() {
     }
   });
 });
+
+$(document).on('click', '.stop-info', function(event){
+  var self = $(this);
+  var Id = self.attr("href")
+  var detailDiv = $(Id);
+
+  var data = {
+    "name": self.attr('data-stop-name')
+  }
+
+  var onDone = function (result) {
+    var div = detailDiv.closest(".panel-body")
+  }
+
+  var onFail = function( err ) {
+    console.log( "Error --> ", err );
+  }
+
+  ajaxCall('get', 'bus_stop', data, onDone, onFail, 'json');
+})
+
+function ajaxCall ( mType, url, dataObj,doneCB, failCB, dataType) {
+  var ajaxObj = {
+    method: mType,
+    url: url,
+    data: dataObj,
+    dataType: 'json'
+  }
+
+  $.ajax(ajaxObj)
+  .done(doneCB)
+  .fail(failCB);
+}

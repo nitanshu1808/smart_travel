@@ -43,6 +43,13 @@ class User < ApplicationRecord
     end
   end
 
+  def self.bus_list
+    Rails.cache.fetch("bus_list", expires_in: 12.hours) do
+      travel = TravelCache.new
+      travel.fetch_bus_information
+    end
+  end
+
   private
   def self.initialize_provider_user(auth)
     {

@@ -5,18 +5,11 @@ class TravelCache
   end
 
   def fetch_bus_information
-    puts("#{TRAVEL_API["dublin_bus"] + TRAVEL_API["bus_stop"]}")
-    begin
-      response = RestClient.get TRAVEL_API["dublin_bus"] + TRAVEL_API["bus_stop"], {:params => @options}
-      JSON.parse(response)
-    rescue RestClient::Unauthorized => error
-      @retries ||= 0
-      if @retries == 0
-        @retries = 1
-        retry
-      else
-        raise error
-      end
-    end   
+    url = TRAVEL_API["dublin_bus"] + TRAVEL_API["bus_stop"]
+    TravelApi.new(dublin_bus_operator).get_response(url)
+  end
+
+  def dublin_bus_operator
+    {operator: "bac"}
   end
 end
