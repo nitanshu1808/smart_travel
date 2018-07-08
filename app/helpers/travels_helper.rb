@@ -1,6 +1,6 @@
 module TravelsHelper
   def display_stop_msg
-    I18n.t("web.stop_info", {id: @stop_info.last["stopid"], name: @stop_info.last["shortname"]})
+    I18n.t("web.stop_info", {id: @stop_info.last["stopid"], name: @stop_info.last["shortname"]}) if @stop_info
   end
 
   def verify_current_user
@@ -20,10 +20,18 @@ module TravelsHelper
   end
 
   def fetch_action
-  (params["action"] == "dublin_bus" || params["action"] == "stop_info") ? "/stop_info" : "/station_info"
+    check_action ? "/stop_info" : "/station_info"
   end
 
   def display_station_msg
     I18n.t("web.station_info", {num: @station_info["number"], name: @station_info["name"]}) if @station_info
+  end
+
+  def transport_url(history)
+    check_action && stop_info_url(input: history.stop_id) || station_info_url(input: history.stop_id)
+  end
+
+  def check_action
+    (params["action"] == "dublin_bus" || params["action"] == "stop_info")
   end
 end

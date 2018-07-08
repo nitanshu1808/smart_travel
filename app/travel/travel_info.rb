@@ -56,15 +56,16 @@ class TravelInfo
     if @options["input"].to_i == 0
       @list.select{|k,v| k["name"] == @options["input"]}.first
     else
-      @list.select{|k,v| k["number"] == @options["input"]}.first
+      num = @options["input"].to_i
+      @list.select{|k,v| k["number"] == num}.first
     end
   end
 
   def get_list
-    if @options["action"] == "dublin_bus" || @options["action"] == "dublin_bus"
+    if ["dublin_bus", "bus_stop", "stop_info"].include?(@options["action"])
       User.bus_list["results"]
-   else
+    else
       User.bike_list
-   end
+    end
   end
 end

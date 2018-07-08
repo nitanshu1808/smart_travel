@@ -48,11 +48,11 @@ $(document).on('click', '.stop-info', function(event){
       var htmlString    = "<ul class='list-group'>"
       for (i = 0; i < dataSet.length; i++) {
         var data      = dataSet[i];        
-        htmlString    += "<li class='list-group-item'><span class = 'bus-detail'>Arrival Time: " +                data.arrivaldatetime + "</span>"  +
-                          "<span class = 'bus-detail'>Destination: " + data.destination + "</span>" +
-                          "<span class = 'bus-detail'>Origin: " + data.origin + "</span>" +
-                          "<span class = 'bus-detail'>Arrival Time: " + data.scheduledarrivaldatetime + "</span>" +
-                          "<span class = 'bus-detail'>Departure Time: " + data.scheduleddeparturedatetime + "</span>"
+        htmlString    += "<li class='list-group-item'><span class = 'bus-detail'>Arrival Time: <b>" +                data.arrivaldatetime + "</b></span>"  +
+                          "<span class = 'bus-detail'>Destination: <b>" + data.destination + "</b></span>" +
+                          "<span class = 'bus-detail'>Origin: <b>" + data.origin + "</b></span>" +
+                          "<span class = 'bus-detail'>Arrival Time: <b>" + data.scheduledarrivaldatetime + "</b></span>" +
+                          "<span class = 'bus-detail'>Departure Time: <b>" + data.scheduleddeparturedatetime + "</b></span>"
       }
       htmlString += "</li></ul>"
     }else{

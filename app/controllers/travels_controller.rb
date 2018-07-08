@@ -20,19 +20,25 @@ class TravelsController < ApplicationController
 
   def stop_info
     @stop_info = TravelInfo.new(params).stop_information
-    create_history
-    render :nothing => true, :status => 200, :content_type => 'text/html' unless @stop_info.present?
+    if @stop_info.present?
+      create_history  
+    else
+      redirect_to dublin_bus_url, notice: I18n.t("web.no_search_result")
+    end
   end
 
   def station_info
     @station_info = TravelInfo.new(params).station_information
-    create_bike_history
-    render :nothing => true, :status => 200, :content_type => 'text/html' unless @station_info.present?
+    if @station_info.present?
+      create_bike_history
+    else
+      redirect_to dublin_bikes_url, notice: I18n.t("web.no_search_result")
+    end    
   end
 
   private
   def create_history
-    if current_user && @stop_info.last && @stop_info.last["stopid"]
+    if current_user && @stop_info && @stop_info.last["stopid"]
       history = current_user.initialize_bus_histories(@stop_info.last)
       history.save
     end
