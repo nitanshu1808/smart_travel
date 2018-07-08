@@ -8,21 +8,33 @@
     <div class="col-md-<%= verify_current_user %>"></div>
     <div class="col-md-8">
       <div class="panel-group dublin-bus-list" id="accordion">
-        <% @results && @results.first(10).each do |result| %>
+        <% if @results.present? %>
+          <% @results && @results.first(10).each do |result| %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <div class= "accordion-toggle">
+                    <%= link_to"#" + result["id"], "data-toggle": "collapse", "data-parent": "#accordion", "data-stop-name": result["name"], class: "stop-info" do %>
+                      <span><%= result["name"] %></span>
+                      <%= image_tag result["icon"], alt: "icon", class: "location-icon" %>
+                    <% end %>  
+                  </div>
+                </h4>
+              </div>
+              <div id="<%= result["id"] %>" class="panel-collapse collapse" data-stop-name = "<%= result["name"] %>">
+                <div class="panel-body hide">
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
           <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading text-center">
               <h4 class="panel-title">
                 <div class= "accordion-toggle">
-                  <%= link_to"#" + result["id"], "data-toggle": "collapse", "data-parent": "#accordion", "data-stop-name": result["name"], class: "stop-info" do %>
-                    <span><%= result["name"] %></span>
-                    <%= image_tag result["icon"], alt: "icon", class: "location-icon" %>
-                  <% end %>  
+                  <%= I18n.t("web.no_search_result") %>
                 </div>
               </h4>
-            </div>
-            <div id="<%= result["id"] %>" class="panel-collapse collapse" data-stop-name = "<%= result["name"] %>">
-              <div class="panel-body hide">
-              </div>
             </div>
           </div>
         <% end %>

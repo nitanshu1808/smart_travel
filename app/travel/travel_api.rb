@@ -1,7 +1,7 @@
 class TravelApi
 
   def initialize(options=nil)
-    @options = options || fetch_options
+    @options = options
   end
 
   def nearby_bus_stops
@@ -33,16 +33,5 @@ class TravelApi
         raise error
       end
     end   
-  end
-
-  private
-  def fetch_options
-    {
-      location: "53.350140, -6.266155",
-      radius: 1000,
-      open_now: true,
-      key: ENV['GOOGLE_API_KEY'],
-      type: "bus_station"
-    }
   end
 end

@@ -3,7 +3,7 @@ class TravelsController < ApplicationController
   end
 
   def dublin_bus
-    nearby_stops    = TravelApi.new.nearby_bus_stops
+    nearby_stops    = TravelApi.new(fetch_options).nearby_bus_stops
     @results        = nearby_stops && nearby_stops["results"]
     @search_history = current_user.searched_history('bus') if current_user
   end
@@ -40,14 +40,24 @@ class TravelsController < ApplicationController
   def create_history
     if current_user && @stop_info && @stop_info.last["stopid"]
       history = current_user.initialize_bus_histories(@stop_info.last)
-      history.save
+      history.valid? && history.save
     end
   end
 
   def create_bike_history
     if current_user && @station_info
       history = current_user.initialize_bike_histories(@station_info)
-      history.save
+      history.valid? && history.save
     end    
+  end
+
+  def fetch_options
+    {
+      location: "#{request.location.coordinates[0]},#{request.location.coordinates[1]}",
+      radius: 1000,
+      open_now: true,
+      key: ENV['GOOGLE_API_KEY'],
+      type: "bus_station"
+    }
   end
 end

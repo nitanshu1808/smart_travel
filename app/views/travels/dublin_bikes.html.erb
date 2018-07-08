@@ -8,8 +8,10 @@
     <div class="col-md-<%= verify_current_user %>"></div>
     <div class="col-md-8">
       <div class="panel-group dublin-bus-list" id="accordion">
+        <% counter = 0 %>
         <% @bike_list && @bike_list.each do |result| %>
           <% next if calculate_dist(result) %>
+          <% counter += 1 %>
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
@@ -43,6 +45,17 @@
                   </li>
                 </ul>
               </div>
+            </div>
+          </div>
+        <% end %>
+        <% if counter == 0 %>
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <h4 class="panel-title">
+                <div class= "accordion-toggle">
+                  <%= I18n.t("web.no_search_result") %>
+                </div>
+              </h4>
             </div>
           </div>
         <% end %>
