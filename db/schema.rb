@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_07_07_225455) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "histories", force: :cascade do |t|
     t.string "stop_name", null: false
     t.string "stop_id"
