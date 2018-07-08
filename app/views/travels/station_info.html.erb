@@ -1,55 +1,49 @@
 <div class="container-fluid text-center">
-  <div class="page-header welcm-msg">
-    <span><%= I18n.t("web.dublin_bikes") %></span>
+  <div class="page-header bus-info-msg">
+    <span><%= I18n.t("web.stop_information") %></span>
   </div>
 </div>
+
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-<%= verify_current_user %>"></div>
+	<div class="row">
+    <div class="col-md-2"></div>
     <div class="col-md-8">
       <div class="panel-group dublin-bus-list" id="accordion">
-        <% @bike_list && @bike_list.each do |result| %>
-          <% next if calculate_dist(result) %>
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
                 <div class= "accordion-toggle">
-                  <%= link_to"#" + "#{result["number"]}", "data-toggle": "collapse", "data-parent": "#accordion", class: "bike-info" do %>
-                    <span><%= result["name"] %></span>
+                  <%= link_to "#dublin-bike-station", "data-toggle": "collapse", "data-parent": "#accordion" do %>
+                    <span><%= display_station_msg %></span>
                     <%= image_tag "bike.png", alt: "icon", class: "location-icon" %>
                   <% end %>
                 </div>
               </h4>
             </div>
-
-            <div id="<%= result["number"] %>" class="panel-collapse collapse">
+            <div id="dublin-bike-station" class="panel-collapse">
               <div class="panel-body">
                 <ul class='list-group'>
                   <li class='list-group-item'>
                     <%= I18n.t("web.address") %>
-                    <b><%= result["address"] %></b>
+                    <b><%= @station_info["address"] %></b>
                   </li>
                   <li class='list-group-item'>
                     <%= I18n.t("web.available_bikes") %>
-                    <b><%= result["available_bikes"] %></b>
+                    <b><%= @station_info["available_bikes"] %></b>
                   </li>
                   <li class='list-group-item'>
                     <%= I18n.t("web.available_bike_stands") %>
-                    <b><%= result["available_bike_stands"] %></b>
+                    <b><%= @station_info["available_bike_stands"] %></b>
                   </li>
                   <li class='list-group-item'>
                     <%= I18n.t("web.status") %>
-                    <b><%= result["status"] %></b>
+                    <b><%= @station_info["status"] %></b>
                   </li>
                 </ul>
               </div>
-            </div>
           </div>
-        <% end %>
       </div>
     </div>
-    <div class="col-md-<%= verifySearchHistory %>">
-      <%= render "searched_history" if current_user %>
-    </div>
+    <div class="col-md-2"></div>
   </div>
 </div>

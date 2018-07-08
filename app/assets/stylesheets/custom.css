@@ -163,7 +163,7 @@ body{
 
 .accordion-toggle {
   display: block;
-  padding: 30px 0px;
+  padding: 40px 0px;
   margin: 4px 0px;
 }
 
@@ -176,7 +176,34 @@ body{
 
 .bus-detail{
 	font-size: 16px;
-	color: #337ab7;
+	color: black;
 	display: block;
-	border: 0.1px dashed grey;
+	/*border: 0.1px dashed grey;*/
+}
+
+.bus-info-msg{
+	color: white !important;
+	font-size: 55px;
+}
+
+.panel-heading .accordion-toggle a:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed a:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+.align-stop-info{
+	margin: 40px 20px;
+}
+
+.searched-results{
+
+}
+.flash-msg{
+	margin-top: 50px !important;
 }

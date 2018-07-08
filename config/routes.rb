@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   get '/dublin_bikes',      to: 'travels#dublin_bikes'
   get '/bus_stop',          to: 'travels#bus_stop'
   get '/bike_station',      to: 'travels#bike_station'
+  get '/stop_info',         to: 'travels#stop_info'  
+  get '/station_info',      to: 'travels#station_info'
   # get '*path' => redirect('/')
 end

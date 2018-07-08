@@ -14,6 +14,11 @@ class TravelApi
     get_response(url)
   end
 
+  def bike_station_info
+    url = TRAVEL_API["dublin_bikes"] + TRAVEL_API["stations"] + "/#{@options["number"]}"
+    get_response(url)
+  end
+
   def get_response(url)
     puts(url) if Rails.env.development?
     begin

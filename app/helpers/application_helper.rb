@@ -51,4 +51,17 @@ module ApplicationHelper
     params["action"] == "dublin_bus" && "Enter stop name/id" || "Enter Station name/id"
   end
 
+  def display_search_tab
+    ["dublin_bus", "stop_info", "dublin_bikes", "station_info"].include?(params["action"])
+  end
+
+  def flash_class(level)
+    case level
+      when "notice" then "alert alert-info"
+      when "success" then "alert alert-success"
+      when "error" then "alert alert-error"
+      when "alert" then "alert alert-error"
+    end
+  end
+
 end

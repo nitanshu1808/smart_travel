@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   #constants
   VALID_EMAIL_REGEX = /\A[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\z/
+  FILTER_SPECIAL_CHARACTERS = /[^0-9A-Za-z]/
 
   #validations
   validates :user_name,  :email, :password, presence: true
@@ -13,6 +14,7 @@ class User < ApplicationRecord
 
   #associations
   has_one :provider, inverse_of: :user, dependent: :destroy
+  has_many :histories, inverse_of: :user, dependent: :destroy
 
   #nested_attributes
   accepts_nested_attributes_for :provider
@@ -50,13 +52,40 @@ class User < ApplicationRecord
     end
   end
 
+  def initialize_bus_histories(data)
+    histories.build({
+      stop_name:    data["shortname"],
+      stop_id:      data["stopid"],
+      history_type: "bus"
+    })
+  end
+
+  def searched_history(type)
+    histories.where("history_type = ?", type)
+  end
+
+  def self.bike_list
+    Rails.cache.fetch("bike_list", expires_in: 12.hours) do
+      travel = TravelCache.new
+      travel.fetch_bike_information
+    end
+  end
+
+  def initialize_bike_histories(data)
+    histories.build({
+      stop_name:    data["name"],
+      stop_id:      data["number"],
+      history_type: "bike"
+    })
+  end
+
   private
   def self.initialize_provider_user(auth)
     {
-      email:        auth.info.email,
-      user_name:    auth.info.name,
-      password:     Devise.friendly_token[0,20],
-      image:        auth.info.image,
+      email:                auth.info.email,
+      user_name:            auth.info.name,
+      password:             Devise.friendly_token[0,20],
+      image:                auth.info.image,
       provider_attributes: {
         provider:         auth.provider,
         provider_uid:     auth.uid

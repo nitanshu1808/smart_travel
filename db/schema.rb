@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_29_235435) do
+ActiveRecord::Schema.define(version: 2018_07_07_225455) do
 
   create_table "histories", force: :cascade do |t|
     t.string "stop_name", null: false
     t.string "stop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "history_type", default: "bus", null: false
+    t.integer "user_id"
   end
 
   create_table "providers", force: :cascade do |t|

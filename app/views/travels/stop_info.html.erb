@@ -1,0 +1,43 @@
+<div class="container-fluid text-center">
+  <div class="page-header bus-info-msg">
+    <span><%= I18n.t("web.stop_information") %></span>
+  </div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="panel-group dublin-bus-list" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <div class= "accordion-toggle">
+                  <%= link_to "#dublin-bus-stop", "data-toggle": "collapse", "data-parent": "#accordion", class: "hello" do %>
+                    <span><%= display_stop_msg %></span>
+                    <%= image_tag "bus-icon.jpg", alt: "icon", class: "location-icon" %>
+                  <% end %>
+                </div>
+              </h4>
+            </div>
+            <div id="dublin-bus-stop" class="panel-collapse">
+              <div class="panel-body">
+              	<ul class='list-group'>
+	              	<% @stop_info.each_with_index do |stop, i| %>
+	              		<% if i + 1 != @stop_info.length %>
+		              		<li class="list-group-item">
+			              		<% stop.each do |key, val| %>
+			              			<span class = 'bus-detail'><%= key.humanize %> : <b><%= val %></b> </span>
+				              	<% end %>	
+			              	</li>
+			              <% end %>
+	              	<% end %>
+	              </ul>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

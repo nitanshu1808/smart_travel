@@ -1,0 +1,21 @@
+<div class="panel panel-default dublin-bus-list text-center">
+  <div class="panel-heading"><%= I18n.t("web.searched_history") %></div>
+  <div class="panel-body">
+    <% if @searched_history %>
+      <ul class='list-group'>
+        <% @search_history.each do |history| %>
+          <%= link_to(stop_info_url(input: history.stop_id)) do %>
+            <li class = "list-group-item">
+              Name: <b><%= history.stop_name %></b>
+            </li>
+            <li class="list-group-item">
+              ID:   <b><%= history.stop_id %></b>
+            </li>
+          <% end %>
+        <% end %>
+       </ul>
+    <% else %>
+      <%= I18n.t("web.no_search_history") %> 
+    <% end %>
+  </div>
+</div>

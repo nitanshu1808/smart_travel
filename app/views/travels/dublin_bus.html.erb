@@ -5,7 +5,7 @@
 </div>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2"></div>
+    <div class="col-md-<%= verify_current_user %>"></div>
     <div class="col-md-8">
       <div class="panel-group dublin-bus-list" id="accordion">
         <% @results && @results.first(10).each do |result| %>
@@ -28,6 +28,8 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-<%= verifySearchHistory %>">
+      <%= render "searched_history" if current_user %>
+    </div>
   </div>
 </div>
