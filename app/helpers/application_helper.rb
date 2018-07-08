@@ -67,7 +67,7 @@ module ApplicationHelper
   def welcome_msg
     if current_user
       content_tag :span do
-        I18n.t("web.welcome") + " #{current_user.user_name || current_user.email} "
+        I18n.t("web.welcome_msg") + " #{current_user.user_name || current_user.email} "
       end
     else
       I18n.t("app_name")

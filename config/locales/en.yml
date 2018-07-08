@@ -74,4 +74,4 @@ en:
     station_information:   "Station Information"
     station_info:         "Information for station number is %{num} for station name is %{name}"
     no_search_result:     "No results found."
-    welcome:              "Welcome"
+    welcome_msg:              "Welcome"
