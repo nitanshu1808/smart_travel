@@ -9,7 +9,7 @@ class TravelsController < ApplicationController
   end
 
   def dublin_bikes
-    @bike_list    = User.bike_list
+    @bike_list      = User.bike_list
     @search_history = current_user.searched_history('bike') if current_user
   end
 
