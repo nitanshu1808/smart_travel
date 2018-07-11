@@ -1,6 +1,7 @@
 <div class="container-fluid text-center">
   <div class="page-header welcm-msg">
-    <span><%= I18n.t("web.dublin_bus") %></span>
+      <%= image_tag "dublin_bus.jpg", alt: "Responsive image", class: "cover-img" %>
+    <span class="centered"><%= I18n.t("web.dublin_bus") %></span>
   </div>
 </div>
 <div class="container-fluid">
@@ -9,29 +10,28 @@
     <div class="col-md-8">
       <div class="panel-group dublin-bus-list" id="accordion">
         <% counter = 0 %>
-        <% if @results.present? %>
-          <% @results && @results.each do |result| %>
-            <% next if calculate_dist(result) %>
-            <% counter += 1 %>
-            <% break if counter == 15 %>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <div class= "accordion-toggle">
-                    <%= link_to"#" + result["stopid"], "data-toggle": "collapse", "data-parent": "#accordion", "data-stop-name": result["shortname"], class: "stop-info" do %>
-                      <span><%= result["shortname"] %></span>
-                      <%= image_tag "bus-icon.jpg", alt: "icon", class: "location-icon" %>
-                    <% end %>
-                  </div>
-                </h4>
-              </div>
-              <div id="<%= result["stopid"] %>" class="panel-collapse collapse" data-stop-name = "<%= result["name"] %>">
-                <div class="panel-body hide">
+        <% @results && @results.each do |result| %>
+          <% next if calculate_dist(result) %>
+          <% counter += 1 %>
+          <% break if counter == 15 %>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <div class= "accordion-toggle">
+                  <%= link_to"#" + result["stopid"], "data-toggle": "collapse", "data-parent": "#accordion", "data-stop-name": result["shortname"], class: "stop-info" do %>
+                    <span><%= result["shortname"] %></span>
+                    <%= image_tag "bus-icon.jpg", alt: "icon", class: "location-icon" %>
+                  <% end %>
                 </div>
+              </h4>
+            </div>
+            <div id="<%= result["stopid"] %>" class="panel-collapse collapse" data-stop-name = "<%= result["name"] %>">
+              <div class="panel-body hide">
               </div>
             </div>
-          <% end %>
-        <% else %>
+          </div>
+        <% end %>
+        <% if counter == 0 %> %>
           <div class="panel panel-default">
             <div class="panel-heading text-center">
               <h4 class="panel-title">

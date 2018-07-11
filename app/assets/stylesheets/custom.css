@@ -207,3 +207,52 @@ body{
 .flash-msg{
 	margin-top: 50px !important;
 }
+
+
+@media screen and (orientation: portrait) {
+  .cover-img{
+		width: 100%;
+		height: 200px;
+	}
+	.centered {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	}
+}
+
+
+@media screen and (orientation: landscape) {
+  .cover-img{
+		width: 	100%;
+		height: 450px;
+	}
+	.centered {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+	}
+}
+
+.cover-img{
+	-webkit-filter: blur(8px);
+   filter: blur(8px);	
+}
+
+
+/*body, html {
+    height: 100%;
+    margin: 0;
+    background-image: url("dublin_bus.jpg");
+
+    height: 100%; 
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+*/
+
