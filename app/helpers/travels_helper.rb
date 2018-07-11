@@ -12,7 +12,8 @@ module TravelsHelper
   end
 
   def calculate_dist(res)
-    lat1, lng1 = [res["position"]["lat"], res["position"]["lng"]]
+    lat1, lng1 = [res["position"]["lat"], res["position"]["lng"]] if res["position"]
+    lat1, lng1 = [res["latitude"], res["longitude"]] unless lat1 && lng1
     lat2, lng2 = request.location.coordinates
     # lat2, lng2 = [53.3732, -6.2043]
     dsitance = Geocoder::Calculations.distance_between([lat1, lng1], [lat2, lng2])

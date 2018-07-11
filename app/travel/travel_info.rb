@@ -6,11 +6,8 @@ class TravelInfo
   end
 
   def fetch_bus_stop_info
-    stop_info   = @list.select{|k,v| k["shortname"] == @options["name"]}.first
-    stop_id     = stop_info && stop_info["stopid"]
-    return error_msg, false if stop_id.nil?
+    stop_id     = @options["id"]
     data = TravelApi.new({stopid: stop_id}).bus_stop_info["results"]
-
     if (data.size == 0) 
       return error_msg, false
     else 
@@ -35,7 +32,7 @@ class TravelInfo
 
   def stop_info
     if @options["input"].to_i == 0
-      @list.select{|k,v| k["shortname"] == @options["input"]}.first
+      @list.select{|k,v| k["shortname"].casecmp?(@options["input"])}.first
     else
       @list.select{|k,v| k["stopid"] == @options["input"]}.first
     end
@@ -54,7 +51,7 @@ class TravelInfo
 
   def station_info
     if @options["input"].to_i == 0
-      @list.select{|k,v| k["name"] == @options["input"]}.first
+      @list.select{|k,v| k["name"].casecmp?(@options["input"])}.first
     else
       num = @options["input"].to_i
       @list.select{|k,v| k["number"] == num}.first
@@ -63,7 +60,7 @@ class TravelInfo
 
   def get_list
     if ["dublin_bus", "bus_stop", "stop_info"].include?(@options["action"])
-      User.bus_list["results"]
+      User.bus_list
     else
       User.bike_list
     end

@@ -12,6 +12,7 @@
         <% @bike_list && @bike_list.each do |result| %>
           <% next if calculate_dist(result) %>
           <% counter += 1 %>
+          <% break if counter == 20 %>
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">

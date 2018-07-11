@@ -32,11 +32,13 @@ $(document).on('turbolinks:load', function() {
 
 $(document).on('click', '.stop-info', function(event){
   var self = $(this);
-  var Id = self.attr("href")
+  var Id        = self.attr("href")
+  var stopID    = Id.split('#')[1]
   var detailDiv = $(Id);
 
   var data = {
-    "name": self.attr('data-stop-name')
+    "name": self.attr('data-stop-name'),
+    "id": stopID
   }
 
   var onDone = function (result) {
@@ -48,11 +50,12 @@ $(document).on('click', '.stop-info', function(event){
       var htmlString    = "<ul class='list-group'>"
       for (i = 0; i < dataSet.length; i++) {
         var data      = dataSet[i];        
-        htmlString    += "<li class='list-group-item'><span class = 'bus-detail'>Arrival Time: <b>" +                data.arrivaldatetime + "</b></span>"  +
+        htmlString    += "<li class='list-group-item'><span class = 'bus-detail'>Due time: <b>" +                data.duetime + "</b></span>"  +
                           "<span class = 'bus-detail'>Destination: <b>" + data.destination + "</b></span>" +
                           "<span class = 'bus-detail'>Origin: <b>" + data.origin + "</b></span>" +
                           "<span class = 'bus-detail'>Arrival Time: <b>" + data.scheduledarrivaldatetime + "</b></span>" +
-                          "<span class = 'bus-detail'>Departure Time: <b>" + data.scheduleddeparturedatetime + "</b></span>"
+                          "<span class = 'bus-detail'>Departure Time: <b>" + data.scheduleddeparturedatetime + "</b></span>" +
+                          "<span class = 'bus-detail'>Route No: <b>" + data.route + "</b></span>"
       }
       htmlString += "</li></ul>"
     }else{

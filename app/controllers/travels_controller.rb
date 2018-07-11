@@ -3,8 +3,7 @@ class TravelsController < ApplicationController
   end
 
   def dublin_bus
-    nearby_stops    = TravelApi.new(fetch_options).nearby_bus_stops
-    @results        = nearby_stops && nearby_stops["results"]
+    @results        = User.bus_list
     @search_history = current_user.searched_history('bus') if current_user
   end
 

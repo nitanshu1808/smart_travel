@@ -8,20 +8,24 @@
     <div class="col-md-<%= verify_current_user %>"></div>
     <div class="col-md-8">
       <div class="panel-group dublin-bus-list" id="accordion">
+        <% counter = 0 %>
         <% if @results.present? %>
-          <% @results && @results.first(10).each do |result| %>
+          <% @results && @results.each do |result| %>
+            <% next if calculate_dist(result) %>
+            <% counter += 1 %>
+            <% break if counter == 15 %>
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
                   <div class= "accordion-toggle">
-                    <%= link_to"#" + result["id"], "data-toggle": "collapse", "data-parent": "#accordion", "data-stop-name": result["name"], class: "stop-info" do %>
-                      <span><%= result["name"] %></span>
-                      <%= image_tag result["icon"], alt: "icon", class: "location-icon" %>
-                    <% end %>  
+                    <%= link_to"#" + result["stopid"], "data-toggle": "collapse", "data-parent": "#accordion", "data-stop-name": result["shortname"], class: "stop-info" do %>
+                      <span><%= result["shortname"] %></span>
+                      <%= image_tag "bus-icon.jpg", alt: "icon", class: "location-icon" %>
+                    <% end %>
                   </div>
                 </h4>
               </div>
-              <div id="<%= result["id"] %>" class="panel-collapse collapse" data-stop-name = "<%= result["name"] %>">
+              <div id="<%= result["stopid"] %>" class="panel-collapse collapse" data-stop-name = "<%= result["name"] %>">
                 <div class="panel-body hide">
                 </div>
               </div>

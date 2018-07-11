@@ -47,8 +47,18 @@ class User < ApplicationRecord
 
   def self.bus_list
     Rails.cache.fetch("bus_list", expires_in: 12.hours) do
-      travel = TravelCache.new
-      travel.fetch_bus_information
+      begin
+        travel = TravelCache.new
+        travel.fetch_bus_information["results"].uniq{|result| result["shortname"]}  
+      rescue Exception => e
+        @retries ||= 0
+        if @retries == 0
+          @retries = 1
+          retry
+        else
+          raise error
+        end
+      end
     end
   end
 
