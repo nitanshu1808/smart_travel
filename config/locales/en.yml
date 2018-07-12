@@ -81,3 +81,4 @@ en:
     origin:               "Origin: "
     scheduledarrivaldatetime: "Arrival Time: "
     route:                   "Route No:  "
+    email_already:        "Email address already exists"

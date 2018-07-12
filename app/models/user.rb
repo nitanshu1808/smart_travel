@@ -32,15 +32,15 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    user = User.social_ntwrk_users(auth.info.email, auth.uid, auth.provider)
+    user            = User.find_by(email: auth.info.email)
+    omniauth_user   = user.provider if user
     if user.present?
-      user.first
+      (omniauth_user && user) || User.initialize_and_add_error(auth)
     else
       begin
         create!(initialize_provider_user(auth))
       rescue Exception => e
         puts e.message
-        return {}
       end
     end
   end
@@ -87,6 +87,14 @@ class User < ApplicationRecord
       stop_id:      data["number"],
       history_type: "bike"
     })
+  end
+
+  def self.initialize_and_add_error(auth)
+    new({
+        email:                auth.info.email,
+        user_name:            auth.info.name,
+        image:                auth.info.image
+      })
   end
 
   private
