@@ -11,7 +11,7 @@
       <div class="panel-group dublin-bus-list" id="accordion">
         <% counter = 0 %>
         <% @results && @results.each do |result| %>
-          <% next if calculate_dist(result) %>
+          <% next if dublin_bus_calc_dist(result) %>
           <% counter += 1 %>
           <% break if counter == 15 %>
           <div class="panel panel-default">
@@ -22,6 +22,7 @@
                     <span><%= result["shortname"] %></span>
                     <%= image_tag "bus-icon.jpg", alt: "icon", class: "location-icon" %>
                   <% end %>
+                  <input type="button" class="btn btn-info calc-dist-btn" value="Calculate Distance" data-location = "[<%= result["latitude"] %>, <%= result["longitude"] %>]" id="<%= result["stopid"] %> + <%= result["shortname"] %> ">
                 </div>
               </h4>
             </div>

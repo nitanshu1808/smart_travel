@@ -35,6 +35,11 @@ class TravelsController < ApplicationController
     end    
   end
 
+  def calculate_distance
+    dist = Geocoder::Calculations.distance_between(request.location.coordinates, JSON.parse(params["location"]))
+    render json: {distance: dist}
+  end
+
   private
   def create_history
     if current_user && @stop_info && @stop_info.last["stopid"]

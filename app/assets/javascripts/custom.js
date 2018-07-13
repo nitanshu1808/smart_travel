@@ -89,3 +89,22 @@ $(function() {
     $('.flash-msg').slideUp(800);
   }, 1500);
 });
+
+$(document).on('click', '.calc-dist-btn', function(event){
+  var self  = $(this);
+  var id    = self.attr("id")
+  var data = {
+    "location": self.attr("data-location")
+  }
+
+  var onDone = function (result) {
+    var htmlString = "<span class = 'distnce'>" + result.data + "</span>";
+    $("#" + id).append(htmlString)
+  }
+
+  var onFail = function( err ) {
+    console.log( "Error --> ", err );
+  }
+
+  ajaxCall('get', 'calculate_distance', data, onDone, onFail, 'json');
+})
