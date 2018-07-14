@@ -14,8 +14,8 @@ module TravelsHelper
   def calculate_dist(res)
     lat1, lng1 = [res["position"]["lat"], res["position"]["lng"]] if res["position"]
     lat1, lng1 = [res["latitude"], res["longitude"]] unless lat1 && lng1
-    lat2, lng2 = request.location.coordinates
-    # lat2, lng2 = [53.3732, -6.2043]
+    # lat2, lng2 = request.location.coordinates
+    lat2, lng2 = [53.3732, -6.2043]
     dsitance = Geocoder::Calculations.distance_between([lat1, lng1], [lat2, lng2])
     return dsitance <= 3 ? false : true
   end
@@ -39,9 +39,13 @@ module TravelsHelper
   def dublin_bus_calc_dist(res)
     lat1, lng1 = [res["position"]["lat"], res["position"]["lng"]] if res["position"]
     lat1, lng1 = [res["latitude"], res["longitude"]] unless lat1 && lng1
-    # lat2, lng2 = request.location.coordinates
-    lat2, lng2 = [53.3732, -6.2043]
+    lat2, lng2 = request.location.coordinates
+    # lat2, lng2 = [53.3732, -6.2043]
     dsitance = Geocoder::Calculations.distance_between([lat1, lng1], [lat2, lng2])
     return dsitance <= 0.7 ? false : true
+  end
+
+  def fetch_position(res)
+    res["position"] && [res["position"]["lat"], res["position"]["lng"]] || [0,0]
   end
 end

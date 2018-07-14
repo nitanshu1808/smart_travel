@@ -22,6 +22,8 @@
                     <span><%= result["name"] %></span>
                     <%= image_tag "bike.png", alt: "icon", class: "location-icon" %>
                   <% end %>
+
+                  <input type="button" class="btn btn-info calc-dist-btn" value="Calculate Distance" data-location = "<%= fetch_position(result) %>" id="stop<%= result["stopid"] %>">
                 </div>
               </h4>
             </div>
