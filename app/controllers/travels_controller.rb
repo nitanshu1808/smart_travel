@@ -36,8 +36,8 @@ class TravelsController < ApplicationController
   end
 
   def calculate_distance
-    dist = Geocoder::Calculations.distance_between(request.location.coordinates, JSON.parse(params["location"]))
-    render json: {distance: dist}
+    dist = Geocoder::Calculations.distance_between(request.location.coordinates, JSON.parse(params["location"])).round(2)
+    render json: {distance: I18n.t("web.calc_dist_from_location", dist: dist)}
   end
 
   private

@@ -98,8 +98,10 @@ $(document).on('click', '.calc-dist-btn', function(event){
   }
 
   var onDone = function (result) {
-    var htmlString = "<span class = 'distnce'>" + result.data + "</span>";
-    $("#" + id).append(htmlString)
+    var modalBody = $(".modal-body")
+    modalBody.html("")
+    modalBody.html(result.distance);
+    $("#myModal").modal('show');
   }
 
   var onFail = function( err ) {

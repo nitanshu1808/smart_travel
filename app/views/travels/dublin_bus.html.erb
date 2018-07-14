@@ -22,7 +22,7 @@
                     <span><%= result["shortname"] %></span>
                     <%= image_tag "bus-icon.jpg", alt: "icon", class: "location-icon" %>
                   <% end %>
-                  <input type="button" class="btn btn-info calc-dist-btn" value="Calculate Distance" data-location = "[<%= result["latitude"] %>, <%= result["longitude"] %>]" id="<%= result["stopid"] %> + <%= result["shortname"] %> ">
+                  <input type="button" class="btn btn-info calc-dist-btn" value="Calculate Distance" data-location = "[<%= result["latitude"] %>, <%= result["longitude"] %>]" id="stop<%= result["stopid"] %>">
                 </div>
               </h4>
             </div>

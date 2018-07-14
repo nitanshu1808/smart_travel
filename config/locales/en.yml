@@ -82,3 +82,5 @@ en:
     scheduledarrivaldatetime: "Arrival Time: "
     route:                   "Route No:  "
     email_already:        "Email address already exists"
+    distance_from_location: "Distance from your location."
+    calc_dist_from_location: "%{dist} miles from your location"
