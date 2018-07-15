@@ -1,6 +1,7 @@
 <div class="container-fluid text-center">
   <div class="page-header bus-info-msg">
-    <span><%= I18n.t("web.stop_information") %></span>
+    <%= image_tag "dublin_bus.jpg", alt: "Responsive image", class: "cover-img" %>
+    <span class="centered"><%= I18n.t("web.stop_information") %></span>
   </div>
 </div>
 
@@ -22,36 +23,42 @@
             </div>
             <div id="dublin-bus-stop" class="panel-collapse">
               <div class="panel-body">
-                  <% @stop_info && @stop_info.each_with_index do |stop, i| %>
-                  <ul class='list-group'>
-                    <% if i + 1 != @stop_info.length %>
-                      <li class="list-group-item">
-                        <%= I18n.t("web.destination") %>
-                        <b><%= stop["destination"] %></b>
-                      </li>
-                      <li class="list-group-item">
-                        <%= I18n.t("web.origin") %>
-                        <b><%= stop["origin"] %></b>
-                      </li>
-                      <li class="list-group-item">
-                        <%= I18n.t("web.due_time") %>
-                        <b><%= stop["duetime"] %> mins</b>
-                      </li>
-                      <li class="list-group-item">
-                        <%= I18n.t("web.departuredatetime") %>
-                        <b><%= stop["departuredatetime"] %></b>
-                      </li>
-                      <li class="list-group-item">
-                        <%= I18n.t("web.scheduledarrivaldatetime") %>
-                        <b><%= stop["scheduledarrivaldatetime"] %></b>
-                      </li>
-                      <li class="list-group-item">
-                        <%= I18n.t("web.route") %>
-                        <b><%= stop["route"] %></b>
-                      </li>
-                    <% end %>
-                  </ul>
+                <% if @stop_info.size > 1 %>   
+                  <% @stop_info.each_with_index do |stop, i| %>
+                    <ul class='list-group'>
+                      <% if i + 1 != @stop_info.length %>
+                        <li class="list-group-item">
+                          <%= I18n.t("web.destination") %>
+                          <b><%= stop["destination"] %></b>
+                        </li>
+                        <li class="list-group-item">
+                          <%= I18n.t("web.origin") %>
+                          <b><%= stop["origin"] %></b>
+                        </li>
+                        <li class="list-group-item">
+                          <%= I18n.t("web.due_time") %>
+                          <b><%= stop["duetime"] %> mins</b>
+                        </li>
+                        <li class="list-group-item">
+                          <%= I18n.t("web.departuredatetime") %>
+                          <b><%= stop["departuredatetime"] %></b>
+                        </li>
+                        <li class="list-group-item">
+                          <%= I18n.t("web.scheduledarrivaldatetime") %>
+                          <b><%= stop["scheduledarrivaldatetime"] %></b>
+                        </li>
+                        <li class="list-group-item">
+                          <%= I18n.t("web.route") %>
+                          <b><%= stop["route"] %></b>
+                        </li>
+                      <% end %>
+                    </ul>
                   <% end %>
+                <% else %>
+                  <div class="text-center">
+                    <%= I18n.t("web.no_real_time_info") %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
