@@ -74,4 +74,13 @@ module ApplicationHelper
     end
   end
 
+  def display_image
+    content_tag :li do
+      image_tag(check_img, alt: "Default User", class: "img-circle default-user") if current_user
+    end
+  end
+
+  def check_img
+    current_user.image ||  "default_user.png" 
+  end
 end

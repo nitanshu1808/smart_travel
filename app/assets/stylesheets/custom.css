@@ -247,3 +247,9 @@ body{
     margin: -8px 15px 0px 0px;
     position: relative;
 }
+
+
+.default-user{
+	height: 45px;
+	width: 45px;
+}
