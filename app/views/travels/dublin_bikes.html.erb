@@ -19,7 +19,7 @@
               <h4 class="panel-title">
                 <div class= "accordion-toggle">
                   <%= link_to"#" + "#{result["number"]}", "data-toggle": "collapse", "data-parent": "#accordion", class: "bike-info" do %>
-                    <span><%= result["name"] %></span>
+                    <span><%= result["name"].titleize %></span>
                     <%= image_tag "bike.png", alt: "icon", class: "location-icon" %>
                   <% end %>
 
