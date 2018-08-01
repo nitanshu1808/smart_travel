@@ -45,7 +45,7 @@ class User < ApplicationRecord
     end
   end
 
-  def self.bus_list
+  def self.bus_list(coordinates=nil)
     Rails.cache.fetch("bus_list", expires_in: 12.hours) do
       begin
         travel = TravelCache.new
@@ -60,6 +60,7 @@ class User < ApplicationRecord
         end
       end
     end
+    coordinates && filter_bus_list(coordinates) || bus_cache
   end
 
   def initialize_bus_histories(data)
@@ -74,11 +75,12 @@ class User < ApplicationRecord
     histories.where("history_type = ?", type)
   end
 
-  def self.bike_list
+  def self.bike_list(coordinates=nil)
     Rails.cache.fetch("bike_list", expires_in: 12.hours) do
       travel = TravelCache.new
       travel.fetch_bike_information
     end
+    coordinates && sort_records(coordinates) || bikes_cache
   end
 
   def initialize_bike_histories(data)
@@ -95,6 +97,35 @@ class User < ApplicationRecord
         user_name:            auth.info.name,
         image:                auth.info.image
       })
+  end
+
+  def self.sort_records(coordinates=nil)
+    data = []
+    bikes_cache.each do |record|
+      position = record["position"]
+      data << record.merge("distance" => calculate_distance(coordinates, [position["lat"], position["lng"]] ) )
+    end
+    data.sort_by{|bike| bike["distance"]}.slice(0,20)
+  end
+
+  def self.calculate_distance(coordinates1, coordinates2)
+    Geocoder::Calculations.distance_between(coordinates1, coordinates2, {:units => :km }).round(2) * 1000
+  end
+
+  def self.filter_bus_list(coordinates=nil)
+    data = []
+    bus_cache.each do |record|
+      data << record.merge("distance" => calculate_distance(coordinates, [record["latitude"], record["longitude"]] ) )
+    end
+    data.sort_by{|bus| bus["distance"]}.slice(0,20)
+  end
+
+  def self.bus_cache
+    Rails.cache.fetch("bus_list")
+  end
+
+  def self.bikes_cache
+    Rails.cache.fetch("bike_list")
   end
 
   private

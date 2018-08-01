@@ -91,22 +91,9 @@ $(function() {
 });
 
 $(document).on('click', '.calc-dist-btn', function(event){
-  var self  = $(this);
-  var id    = self.attr("id")
-  var data = {
-    "location": self.attr("data-location")
-  }
-
-  var onDone = function (result) {
-    var modalBody = $(".modal-body")
-    modalBody.html("")
-    modalBody.html(result.distance);
-    $("#myModal").modal('show');
-  }
-
-  var onFail = function( err ) {
-    console.log( "Error --> ", err );
-  }
-
-  ajaxCall('get', 'calculate_distance', data, onDone, onFail, 'json');
+  var distance = $(this).attr("data-distance");
+  var modalBody = $(".modal-body")
+  modalBody.html("")
+  modalBody.html(I18n.t("web.calc_dist_from_location", {dist: distance}) );
+  $("#myModal").modal('show');
 })

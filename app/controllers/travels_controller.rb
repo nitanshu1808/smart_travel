@@ -1,15 +1,15 @@
 class TravelsController < ApplicationController
+  before_action :find_search_history, only: [:dublin_bus, :dublin_bikes], if: -> { current_user.present? }
+
   def index
   end
 
   def dublin_bus
-    @results        = User.bus_list
-    @search_history = current_user.searched_history('bus') if current_user
+    @results        = User.bus_list(coordinates)
   end
 
   def dublin_bikes
-    @bike_list      = User.bike_list
-    @search_history = current_user.searched_history('bike') if current_user
+    @bike_list      = User.bike_list(coordinates)
   end
 
   def bus_stop
@@ -35,11 +35,6 @@ class TravelsController < ApplicationController
     end    
   end
 
-  def calculate_distance
-    dist = Geocoder::Calculations.distance_between(request.location.coordinates, JSON.parse(params["location"])).round(2)
-    render json: {distance: I18n.t("web.calc_dist_from_location", dist: dist)}
-  end
-
   private
   def create_history
     if current_user && @stop_info && @stop_info.last["stopid"]
@@ -63,5 +58,14 @@ class TravelsController < ApplicationController
       key: ENV['GOOGLE_API_KEY'],
       type: "bus_station"
     }
+  end
+
+  def coordinates
+    request.location.coordinates
+  end
+
+  def find_search_history
+    type = params["action"] == "dublin_bus" ? "bus" : "bike"
+    @search_history = current_user.searched_history(type)
   end
 end

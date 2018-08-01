@@ -16,6 +16,5 @@ Rails.application.routes.draw do
   get '/bike_station',      to: 'travels#bike_station'
   get '/stop_info',         to: 'travels#stop_info'  
   get '/station_info',      to: 'travels#station_info'
-  get '/calculate_distance',to: 'travels#calculate_distance'
   # get '*path' => redirect('/')
 end

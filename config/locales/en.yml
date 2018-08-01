@@ -83,5 +83,6 @@ en:
     route:                   "Route No:  "
     email_already:        "Email address already exists"
     distance_from_location: "Distance from your location."
-    calc_dist_from_location: "%{dist} miles from your location"
+    calc_dist_from_location: "%{dist} meters from your location"
     no_real_time_info:       "No real time information available for this stop"
+

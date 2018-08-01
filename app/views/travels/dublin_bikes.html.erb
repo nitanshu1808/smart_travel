@@ -9,11 +9,7 @@
     <div class="col-md-<%= verify_current_user %>"></div>
     <div class="col-md-8">
       <div class="panel-group dublin-bus-list" id="accordion">
-        <% counter = 0 %>
-        <% @bike_list && @bike_list.each do |result| %>
-          <% next if calculate_dist(result) %>
-          <% counter += 1 %>
-          <% break if counter == 20 %>
+        <% @bike_list.each do |result| %>
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
@@ -22,8 +18,7 @@
                     <span><%= result["name"].titleize %></span>
                     <%= image_tag "bike.png", alt: "icon", class: "location-icon" %>
                   <% end %>
-
-                  <input type="button" class="btn btn-info calc-dist-btn" value="Calculate Distance" data-location = "<%= fetch_position(result) %>" id="stop<%= result["stopid"] %>">
+                  <input type="button" class="btn btn-info calc-dist-btn" value="Calculate Distance" data-location = "<%= fetch_position(result) %>" id="stop<%= result["number"] %>" data-distance = "<%= result["distance"] %>" >
                 </div>
               </h4>
             </div>
@@ -49,17 +44,6 @@
                   </li>
                 </ul>
               </div>
-            </div>
-          </div>
-        <% end %>
-        <% if counter == 0 %>
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">
-              <h4 class="panel-title">
-                <div class= "accordion-toggle">
-                  <%= I18n.t("web.no_search_result") %>
-                </div>
-              </h4>
             </div>
           </div>
         <% end %>
