@@ -1,6 +1,6 @@
 # Introduction
 
-Dublin buses and Dublin bikes are the most usable transport medium and the biggest public trans- port provider in the Dublin area. The objective is to guide/acknowledge users about the nearest bus or bike station in order to make the travel experience easier. Not only will it provide the real time information about the transport provider but would also acknowledge user about the nearest transport station. This involves consuming web services of the following:
+Dublin buses and Dublin bikes are the most usable transport medium and the biggest public transport provider in the Dublin area. The objective is to guide/acknowledge users about the nearest bus or bike station in order to make the travel experience easier. Not only will it provide the real time information about the transport provider but would also acknowledge user about the nearest transport station. This involves consuming web services of the following:
 * Dublin bikes,
 * Dublin buses,
 * Geo-coding, 
