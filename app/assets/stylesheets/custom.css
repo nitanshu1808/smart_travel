@@ -253,3 +253,35 @@ body{
 	height: 45px;
 	width: 45px;
 }
+
+
+.align-div{
+	margin-top: 70px !important;
+}
+
+.pokemon-header{
+	color: white;
+	font-size: 60px ; 
+}
+
+.upload-csv-btn{
+	width: 30%;
+}
+
+.file-optn{
+	display: inline-block !important;
+	margin-bottom: 30px;
+}
+
+.pokemon-data td, th{
+	color: white !important;
+	text-align: center !important;
+}
+
+.upload-form{
+	margin-bottom: 30px !important;
+}
+
+.delete-btn{
+	float: right;
+}
