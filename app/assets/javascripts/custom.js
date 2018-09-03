@@ -97,3 +97,12 @@ $(document).on('click', '.calc-dist-btn', function(event){
   modalBody.html(I18n.t("web.calc_dist_from_location", {dist: distance}) );
   $("#myModal").modal('show');
 })
+
+$(document).on('click', '.upload-csv-btn', function(event){
+  $(".add-file").remove();
+  if($('#file').val() == ""){
+    var error_msg = '<p class = "add-file"> ' + I18n.t("web.add_file") + '</p>';
+    $('#file').after(error_msg)
+    return false
+  }
+})

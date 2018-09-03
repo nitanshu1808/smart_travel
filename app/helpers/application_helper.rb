@@ -83,4 +83,8 @@ module ApplicationHelper
   def check_img
     current_user.image ||  "default_user.png" 
   end
+
+  def delete_all_pokemons
+    link_to I18n.t("web.delete_all"), pokemons_destroy_path, class: "btn btn-danger delete-btn" , method: 'delete', data: {confirm: I18n.t("web.confirmation_msg")}
+  end
 end

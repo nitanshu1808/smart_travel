@@ -12,6 +12,6 @@ class PokemonsController < ApplicationController
 
   def destroy_all
   	PokemonRemoveWorker.perform_async
-  	redirect_to pokemons_path, :flash => { :error => I18n.t("web.record_deleted") }
+  	redirect_to pokemons_path, :flash => { :notice => I18n.t("web.record_deleted") }
   end
 end
