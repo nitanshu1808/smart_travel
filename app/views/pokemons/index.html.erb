@@ -6,8 +6,7 @@
       <%= file_field_tag :file, class: "file-optn" %>
     </div>
     <%= submit_tag I18n.t("web.import_csv"), class: "btn btn-success upload-csv-btn" %>
-  <% end %>
-
+  <% end %>  
 
   <table class="table text-center pokemon-data">
     <thead>
@@ -19,14 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @pokemons.each do |pokemon| %>
-        <tr>
-          <td><%= pokemon.id %></td>
-          <td><%= pokemon.name %></td>
-          <td><%= pokemon.height %></td>
-          <td><%= pokemon.weight %></td>
-        </tr>
-      <% end %>
+      <%= render partial: 'pokemons/pokemon', collection: @pokemons, cached: true %>
     </tbody>
   </table>
 
