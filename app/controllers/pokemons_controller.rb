@@ -14,4 +14,27 @@ class PokemonsController < ApplicationController
   	PokemonRemoveWorker.perform_async
   	redirect_to pokemons_path, :flash => { :notice => I18n.t("web.record_deleted") }
   end
+
+  def new
+    @pokemon = Pokemon.new
+  end
+
+  def create
+    @pokemon = Pokemon.new(pokemon_params)
+    if @pokemon.save
+      @pokemons = Pokemon.page( params[:page])
+    end
+  end
+
+  def destroy
+    @pokemon = Pokemon.find_by(id: params["id"])
+    @pokemon.destroy
+  end
+
+  private
+
+  def pokemon_params
+    params.require(:pokemon).permit(:name, :height, :weight)
+  end
+
 end

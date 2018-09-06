@@ -1,6 +1,7 @@
-<tr>
+<tr id = <%= pokemon.id %> >
   <td><%= pokemon.id %></td>
   <td><%= pokemon.name %></td>
   <td><%= pokemon.height %></td>
   <td><%= pokemon.weight %></td>
+  <td><%= link_to I18n.t("web.destroy_pok"), pokemon, class: "btn btn-primary delete-pokemon", data: { confirm: I18n.t("web.confirm_delete", {model: I18n.t("web.pokemon"), name: pokemon.name} )}, remote: true, method: :delete  %></td>
 </tr>

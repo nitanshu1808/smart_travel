@@ -73,10 +73,9 @@ body{
 	font-size: 15px;
 }
 
-.validation-error{
+.col-sm-10 .validation-error{
 	color: red;
 	float: left;
-	margin: -15px 0px 10px 0px;
 }
 
 .welcm-msg{
@@ -289,4 +288,12 @@ body{
 .add-file{
 	color: red  !important;
 	margin: 1px 0px 10px 0px;
+}
+
+.create-btn{
+	float: left;
+}
+
+#new_user .validation-error{
+	margin-top: -15px; 
 }

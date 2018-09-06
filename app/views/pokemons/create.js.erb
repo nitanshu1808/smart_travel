@@ -1,0 +1,8 @@
+<% if @pokemon.errors.any? %>
+	$(".modal-body").html("<%= j(render 'pokemons/form') %>")
+<% else %>
+	$(".pokemon-list").html("<%= j(render partial: 'pokemons/pokemon', collection: @pokemons, cached: true) %>")
+	$("#myModalLabel").html("")
+	$(".modal-body").html("")
+	$("#myModal").modal('hide');
+<% end %>

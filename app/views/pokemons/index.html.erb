@@ -1,23 +1,26 @@
 <div class="container-fluid text-center align-div">
   <p class="pokemon-header"><%= I18n.t('web.pokemons') %></p>
   <%= delete_all_pokemons %>
+  <%= link_to I18n.t("web.create_pokemon"), new_pokemon_path, class: "btn btn-success create-btn" , remote: true %>
+
   <%= form_tag({:action => :upload}, multipart: true, class: "upload-form") do %>
     <div>
       <%= file_field_tag :file, class: "file-optn" %>
     </div>
     <%= submit_tag I18n.t("web.import_csv"), class: "btn btn-success upload-csv-btn" %>
-  <% end %>  
+  <% end %>
 
   <table class="table text-center pokemon-data">
     <thead>
       <tr>
-        <th><%= I18n.t("web.id") %></th>
-        <th><%= I18n.t("web.name") %></th>
-        <th><%= I18n.t("web.height") %></th>
-        <th><%= I18n.t("web.weight") %></th>
+        <th><%= I18n.t("web.id")      %></th>
+        <th><%= I18n.t("web.name")    %></th>
+        <th><%= I18n.t("web.height")  %></th>
+        <th><%= I18n.t("web.weight")  %></th>
+        <th><%= I18n.t("web.delete")  %></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="pokemon-list">
       <%= render partial: 'pokemons/pokemon', collection: @pokemons, cached: true %>
     </tbody>
   </table>

@@ -1,35 +1,3 @@
-$(document).on('turbolinks:load', function() {
-  $("#new_user").validate({
-    rules: {
-      "user[user_name]": {
-        required: true,
-        maxlength: 30
-      },
-      "user[email]": {
-        required: true,
-        maxlength: 50,
-        email: true
-      },
-      "user[password]":{
-        required: true
-      }
-    },
-    messages: {
-      "user[user_name]": {
-          required:  I18n.t("model.user.enter_val", {val: I18n.t("model.user.user_name")})
-      },
-      "user[email]": {
-          required:  I18n.t("model.user.enter_val", {val: I18n.t("model.user.email")}),
-          maxlength: I18n.t("model.user.character_validation", {val: I18n.t("model.user.email"), num: 50}),
-          email:     I18n.t("model.user.valid_email")
-      },
-      "user[password]": {
-          required:  I18n.t("model.user.enter_val", {val: I18n.t("model.user.password")})
-      }
-    }
-  });
-});
-
 $(document).on('click', '.stop-info', function(event){
   var self = $(this);
   var Id        = self.attr("href")
@@ -78,7 +46,6 @@ function ajaxCall ( mType, url, dataObj,doneCB, failCB, dataType) {
     data: dataObj,
     dataType: 'json'
   }
-
   $.ajax(ajaxObj)
   .done(doneCB)
   .fail(failCB);
@@ -106,3 +73,39 @@ $(document).on('click', '.upload-csv-btn', function(event){
     return false
   }
 })
+
+
+$( document ).on('turbolinks:load', function() {
+  $('#myModal').on('click', '.modal-body #create-pokmn',  function() {
+  $("#new_pokemon").validate({
+    rules: {
+      "pokemon[name]": {
+        required: true,
+        maxlength: 30
+      },
+      "pokemon[height]": {
+        required: true,
+        maxlength: 10
+      },
+      "pokemon[weight]":{
+        required: true
+      }
+    },
+    messages: {
+      "pokemon[name]": {
+          required:  I18n.t("web.enter_val", {val: I18n.t("model.pokemon.name")})
+      },
+      "pokemon[height]": {
+          required:  I18n.t("web.enter_val", {val: I18n.t("model.pokemon.height")}),
+          maxlength: I18n.t("web.character_validation", {val: I18n.t("model.pokemon.height"), num: 10})
+      },
+      "pokemon[weight]": {
+          required:  I18n.t("web.enter_val", {val: I18n.t("model.pokemon.weight")})
+      }
+    }
+  });
+});
+
+})
+
+

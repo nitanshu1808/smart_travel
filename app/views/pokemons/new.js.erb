@@ -1,0 +1,3 @@
+$("#myModalLabel").html("<%= I18n.t('web.create_pokemon') %>")
+$(".modal-body").html("<%= j(render 'pokemons/form') %>")
+$("#myModal").modal('show');

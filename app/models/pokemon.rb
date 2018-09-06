@@ -6,6 +6,10 @@ class Pokemon < ApplicationRecord
 
   # validations
   validates :name,  :height, :weight, presence: true
+  validates :name,  uniqueness: true
+
+  # scope
+  default_scope {order("created_at desc")}
 
   class << self
 
