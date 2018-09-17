@@ -20,3 +20,4 @@
 //= require bootstrap.min
 //= require jquery.validate
 //= require custom
+//= require_tree .

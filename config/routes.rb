@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   delete '/destroy_all',     to: 'pokemons#destroy_all', as: 'pokemons_destroy'
   
   # get '*path' => redirect('/')
+  mount ActionCable.server => '/cable'
 end

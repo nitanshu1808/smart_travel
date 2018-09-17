@@ -1,21 +1,18 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: smart_travel_dev
-  pool: 5
-  username: postgres
-  password: nitanshu
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: smart_travel_test
   pool: 5
   username: postgres
   password: nitanshu
 
+development:
+
+  database: my_app_development
+
+development:
+  <<: *default
+  database: smart_travel_dev
+
+test:
+  <<: *default
+  database: smart_travel_test
