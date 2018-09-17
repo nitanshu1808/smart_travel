@@ -2,6 +2,15 @@ require "rails_helper"
 
 RSpec.describe User, :type => :model do
 
+  it "saves a user without a user_name" do
+    user = User.new
+    expect(user.save).to eql(false)
+  end
+
+  it "should report error" do
+    expect { some_undefined_variable }.to raise_error(NameError)
+  end
+
   context "validate User" do
     before(:all) do
 

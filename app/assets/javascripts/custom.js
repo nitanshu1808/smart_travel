@@ -77,35 +77,34 @@ $(document).on('click', '.upload-csv-btn', function(event){
 
 $( document ).on('turbolinks:load', function() {
   $('#myModal').on('click', '.modal-body #create-pokmn',  function() {
-  $("#new_pokemon").validate({
-    rules: {
-      "pokemon[name]": {
-        required: true,
-        maxlength: 30
+    $("#new_pokemon").validate({
+      rules: {
+        "pokemon[name]": {
+          required: true,
+          maxlength: 30
+        },
+        "pokemon[height]": {
+          required: true,
+          maxlength: 10
+        },
+        "pokemon[weight]":{
+          required: true
+        }
       },
-      "pokemon[height]": {
-        required: true,
-        maxlength: 10
-      },
-      "pokemon[weight]":{
-        required: true
+      messages: {
+        "pokemon[name]": {
+            required:  I18n.t("web.enter_val", {val: I18n.t("model.pokemon.name")})
+        },
+        "pokemon[height]": {
+            required:  I18n.t("web.enter_val", {val: I18n.t("model.pokemon.height")}),
+            maxlength: I18n.t("web.character_validation", {val: I18n.t("model.pokemon.height"), num: 10})
+        },
+        "pokemon[weight]": {
+            required:  I18n.t("web.enter_val", {val: I18n.t("model.pokemon.weight")})
+        }
       }
-    },
-    messages: {
-      "pokemon[name]": {
-          required:  I18n.t("web.enter_val", {val: I18n.t("model.pokemon.name")})
-      },
-      "pokemon[height]": {
-          required:  I18n.t("web.enter_val", {val: I18n.t("model.pokemon.height")}),
-          maxlength: I18n.t("web.character_validation", {val: I18n.t("model.pokemon.height"), num: 10})
-      },
-      "pokemon[weight]": {
-          required:  I18n.t("web.enter_val", {val: I18n.t("model.pokemon.weight")})
-      }
-    }
+    });
   });
-});
-
 })
 
 

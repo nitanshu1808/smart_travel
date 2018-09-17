@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/show'
   require 'sidekiq/web'
 
   mount Sidekiq::Web => "/sidekiq"
